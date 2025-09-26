@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>deneme123</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>deneme123</h1>
+            <p></p>
+        </div>
+
+        <div class="main-content">
+            <div class="card">
+                <h2>📝 Yeni Deneme Kaydı</h2>
+                
+                <div class="toggle-group">
+                    <button id="btn-tyt" class="toggle-btn active" onclick="setSelected('tyt')">TYT</button>
+                    <button id="btn-ayt" class="toggle-btn" onclick="setSelected('ayt')">AYT</button>
+                </div>
+
+                <div class="input-group date-input">
+                    <label for="exam-date">📅 Sınav Tarihi:</label>
+                    <input type="date" id="exam-date">
+                </div>
+
+                <!-- TYT Bölümü -->
+                <div id="section-tyt" class="exam-section">
+                    <h3>📚 TYT Sonuçları</h3>
+                    <div class="subject-inputs">
+                        <div class="subject-group">
+                            <h4>📖 Türkçe (40 soru)</h4>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="tyt-turkce-dogru">Doğru</label>
+                                    <input type="number" id="tyt-turkce-dogru" min="0" max="40" placeholder="0" oninput="calculateNet('tyt', 'turkce', 40)">
+                                </div>
+                                <div class="input-group">
+                                    <label for="tyt-turkce-yanlis">Yanlış</label>
+                                    <input type="number" id="tyt-turkce-yanlis" min="0" max="40" placeholder="0" oninput="calculateNet('tyt', 'turkce', 40)">
+                                </div>
+                            </div>
+                            <div class="net-display">
+                                <span id="tyt-turkce-net">0</span> net
+                            </div>
+                        </div>
+
+                        <div class="subject-group">
+                            <h4>🏛️ Sosyal (20 soru)</h4>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="tyt-sosyal-dogru">Doğru</label>
+                                    <input type="number" id="tyt-sosyal-dogru" min="0" max="20" placeholder="0" oninput="calculateNet('tyt', 'sosyal', 20)">
+                                </div>
+                                <div class="input-group">
+                                    <label for="tyt-sosyal-yanlis">Yanlış</label>
+                                    <input type="number" id="tyt-sosyal-yanlis" min="0" max="20" placeholder="0" oninput="calculateNet('tyt', 'sosyal', 20)">
+                                </div>
+                            </div>
+                            <div class="net-display">
+                                <span id="tyt-sosyal-net">0</span> net
+                            </div>
+                        </div>
+
+                        <div class="subject-group">
+                            <h4>🔢 Matematik (40 soru)</h4>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="tyt-mat-dogru">Doğru</label>
+                                    <input type="number" id="tyt-mat-dogru" min="0" max="40" placeholder="0" oninput="calculateNet('tyt', 'mat', 40)">
+                                </div>
+                                <div class="input-group">
+                                    <label for="tyt-mat-yanlis">Yanlış</label>
+                                    <input type="number" id="tyt-mat-yanlis" min="0" max="40" placeholder="0" oninput="calculateNet('tyt', 'mat', 40)">
+                                </div>
+                            </div>
+                            <div class="net-display">
+                                <span id="tyt-mat-net">0</span> net
+                            </div>
+                        </div>
+
+                        <div class="subject-group">
+                            <h4>🧪 Fen (20 soru)</h4>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="tyt-fen-dogru">Doğru</label>
+                                    <input type="number" id="tyt-fen-dogru" min="0" max="20" placeholder="0" oninput="calculateNet('tyt', 'fen', 20)">
+                                </div>
+                                <div class="input-group">
+                                    <label for="tyt-fen-yanlis">Yanlış</label>
+                                    <input type="number" id="tyt-fen-yanlis" min="0" max="20" placeholder="0" oninput="calculateNet('tyt', 'fen', 20)">
+                                </div>
+                            </div>
+                            <div class="net-display">
+                                <span id="tyt-fen-net">0</span> net
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: #e6fffa; padding: 15px; border-radius: 10px; margin-top: 20px; text-align: center;">
+                        <strong>TYT Toplam: <span id="tyt-total-net">0</span>/120 net</strong>
+                    </div>
+                </div>
+
+                <!-- AYT Bölümü -->
+                <div id="section-ayt" class="exam-section hidden">
+                    <h3>🎓 AYT Sonuçları</h3>
+                    <div class="subject-inputs">
+                        <div class="subject-group">
+                            <h4>🔢 Matematik (40 soru)</h4>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="ayt-mat-dogru">Doğru</label>
+                                    <input type="number" id="ayt-mat-dogru" min="0" max="40" placeholder="0" oninput="calculateNet('ayt', 'mat', 40)">
+                                </div>
+                                <div class="input-group">
+                                    <label for="ayt-mat-yanlis">Yanlış</label>
+                                    <input type="number" id="ayt-mat-yanlis" min="0" max="40" placeholder="0" oninput="calculateNet('ayt', 'mat', 40)">
+                                </div>
+                            </div>
+                            <div class="net-display">
+                                <span id="ayt-mat-net">0</span> net
+                            </div>
+                        </div>
+
+                        <div class="subject-group">
+                            <h4>⚡ Fizik (14 soru)</h4>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="ayt-fizik-dogru">Doğru</label>
+                                    <input type="number" id="ayt-fizik-dogru" min="0" max="14" placeholder="0" oninput="calculateNet('ayt', 'fizik', 14)">
+                                </div>
+                                <div class="input-group">
+                                    <label for="ayt-fizik-yanlis">Yanlış</label>
+                                    <input type="number" id="ayt-fizik-yanlis" min="0" max="14" placeholder="0" oninput="calculateNet('ayt', 'fizik', 14)">
+                                </div>
+                            </div>
+                            <div class="net-display">
+                                <span id="ayt-fizik-net">0</span> net
+                            </div>
+                        </div>
+
+                        <div class="subject-group">
+                            <h4>⚗️ Kimya (13 soru)</h4>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="ayt-kimya-dogru">Doğru</label>
+                                    <input type="number" id="ayt-kimya-dogru" min="0" max="13" placeholder="0" oninput="calculateNet('ayt', 'kimya', 13)">
+                                </div>
+                                <div class="input-group">
+                                    <label for="ayt-kimya-yanlis">Yanlış</label>
+                                    <input type="number" id="ayt-kimya-yanlis" min="0" max="13" placeholder="0" oninput="calculateNet('ayt', 'kimya', 13)">
+                                </div>
+                            </div>
+                            <div class="net-display">
+                                <span id="ayt-kimya-net">0</span> net
+                            </div>
+                        </div>
+
+                        <div class="subject-group">
+                            <h4>🧬 Biyoloji (13 soru)</h4>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="ayt-biyoloji-dogru">Doğru</label>
+                                    <input type="number" id="ayt-biyoloji-dogru" min="0" max="13" placeholder="0" oninput="calculateNet('ayt', 'biyoloji', 13)">
+                                </div>
+                                <div class="input-group">
+                                    <label for="ayt-biyoloji-yanlis">Yanlış</label>
+                                    <input type="number" id="ayt-biyoloji-yanlis" min="0" max="13" placeholder="0" oninput="calculateNet('ayt', 'biyoloji', 13)">
+                                </div>
+                            </div>
+                            <div class="net-display">
+                                <span id="ayt-biyoloji-net">0</span> net
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: #fef5e7; padding: 15px; border-radius: 10px; margin-top: 20px; text-align: center;">
+                        <strong>AYT Toplam: <span id="ayt-total-net">0</span>/80 net</strong>
+                    </div>
+                </div>
+
+                <div id="error-container"></div>
+                
+                <button id="save-btn" class="btn" onclick="addExamRecord()">💾 TYT Kaydet</button>
+<!-- Gemini Analiz Bölümü -->
+<div class="analysis-section" style="margin-top: 20px; padding: 15px; background: #fff7e6; border-radius: 10px;">
+    <button class="btn" onclick="analyzeWithGemini()">🧠 Denemeyi Analiz Et</button>
+    <div id="gemini-analysis-result" style="display:none; margin-top: 10px; padding: 10px; background: #f0f4ff; border-radius: 8px;">
+        Analiz sonucu burada görünecek...
+    </div>
+</div>
+
+            </div>
+
+            <div class="card">
+                <h2>📊 Hızlı İstatistikler</h2>
+                <div id="quick-stats">
+                    <div class="empty-state">Henüz deneme kaydı bulunmuyor. İlk deneme kaydınızı ekleyin!</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-container">
+            <h2>📈 Deneme Geçmişi</h2>
+            <div id="exam-results">
+                <div class="empty-state">Kayıtlı deneme bulunamadı. Yukarıdaki formu kullanarak ilk deneme kaydınızı ekleyin.</div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
